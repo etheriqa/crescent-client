@@ -36,6 +36,48 @@ window.chat = function(message) {
   }))
 }
 
+window.stage = function(stageID) {
+  ws.send(JSON.stringify({
+    Type: 'Stage',
+    Data: {
+      StageID: stageID
+    }
+  }))
+}
+
+window.join = function(className) {
+  ws.send(JSON.stringify({
+    Type: 'Join',
+    Data: {
+      ClassName: className
+    }
+  }))
+}
+
+window.leave = function() {
+  ws.send(JSON.stringify({
+    Type: 'Leave',
+    Data: {}
+  }))
+}
+
+window.ability = function(abilityName, objectUnitID) {
+  ws.send(JSON.stringify({
+    Type: 'Ability',
+    Data: {
+      AbilityName: abilityName,
+      ObjectUnitID: objectUnitID
+    }
+  }))
+}
+
+window.interrupt = function() {
+  ws.send(JSON.stringify({
+    Type: 'Interrupt',
+    Data: {}
+  }))
+}
+
 React.render(
   <LogList store={logStore} />,
   document.getElementById('crescent')
