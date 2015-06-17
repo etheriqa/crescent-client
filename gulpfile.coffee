@@ -13,14 +13,14 @@ gulp.task 'default', ['build']
 gulp.task 'build', ['html', 'js', 'css', 'vendor']
 
 gulp.task 'html', ->
-  gulp.src 'app/html/index.html'
+  gulp.src 'app/index.html'
     .pipe gulp.dest('public')
 
 gulp.task 'js', ->
   browserify 'app/js/main.jsx'
     .transform babelify
     .bundle()
-    .pipe plumber()
+    .on 'error', (e) -> console.log(e.toString())
     .pipe source('app.js')
     .pipe gulp.dest('public')
 
@@ -38,12 +38,14 @@ gulp.task 'vendor', ->
     .pipe concat('vendor.js')
     .pipe gulp.dest('public')
 
-gulp.task 'watch', ->
-  gulp.watch 'app/html/index.html', ['html', 'reload']
+gulp.task 'watch', ['build'], ->
+  gulp.watch 'app/index.html', ['html', 'reload']
+  gulp.watch 'app/js/**/*.js', ['js', 'reload']
   gulp.watch 'app/js/**/*.jsx', ['js', 'reload']
   gulp.watch 'app/css/**/*.less', ['css', 'reload']
+  gulp.watch 'bower_components/**/*.js', ['vendor', 'reload']
 
-gulp.task 'server', ->
+gulp.task 'serve', ['watch'], ->
   sync
     server:
       baseDir: 'public'
