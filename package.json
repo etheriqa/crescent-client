@@ -4,7 +4,7 @@
   "description": "The client application for Crescent",
   "main": "index.js",
   "scripts": {
-    "postinstall": "bower install",
+    "install": "bower install",
     "build": "gulp build",
     "start": "gulp serve"
   },
