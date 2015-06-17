@@ -1,4 +1,4 @@
-import Dispatcher from './Dispatcher'
+import Dispatcher from './dispatcher'
 import {LogList} from './components/log.jsx'
 import {LogStore} from './stores/log'
 
