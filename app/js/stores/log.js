@@ -10,6 +10,10 @@ class Log {
   id() {
     return this.id_
   }
+  timestamp() {
+    const pad = n => n < 10 ? '0' + n : '' + n
+    return pad(this.date_.getHours()) + ':' + pad(this.date_.getMinutes()) + ':' + pad(this.date_.getSeconds())
+  }
   date() {
     return this.date_
   }
