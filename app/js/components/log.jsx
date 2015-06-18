@@ -21,8 +21,14 @@ class Log extends React.Component {
 
 export class LogList extends React.Component {
   componentWillMount() {
-    this.setState({logs: this.props.store.logs()})
-    this.props.store.register('change', this.onchange.bind(this))
+    const id = this.props.store.register('change', this.onchange.bind(this))
+    this.setState({
+      id: id,
+      logs: this.props.store.logs()
+    })
+  }
+  componentWillUnmount() {
+    this.props.store.unregister('change', this.state.id)
   }
   onchange() {
     this.setState({logs: this.props.store.logs()})
