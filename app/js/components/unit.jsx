@@ -16,7 +16,7 @@ export default class Unit extends React.Component {
     const unit = this.state.unit
     return (
       <div className="unit">
-        name: {unit.unitName()} ({unit.className()})<br />
+        name: [{unit.unitID()}] {unit.unitName()} ({unit.className()})<br />
         health: {unit.health()} / {unit.healthMax()}<br />
         mana: {unit.mana()} / {unit.manaMax()}<br />
       </div>
