@@ -1,3 +1,5 @@
+import Resource from './resource.jsx'
+
 export default class Unit extends React.Component {
   componentWillMount() {
     const id = this.props.unit.register('change', this.onchange.bind(this))
@@ -16,9 +18,9 @@ export default class Unit extends React.Component {
     const unit = this.state.unit
     return (
       <div className="unit">
-        name: [{unit.unitID()}] {unit.unitName()} ({unit.className()})<br />
-        health: {unit.health()} / {unit.healthMax()}<br />
-        mana: {unit.mana()} / {unit.manaMax()}<br />
+        [{unit.className()}] {unit.unitName()}
+        <Resource unit={this.props.unit} resourceType="health" />
+        <Resource unit={this.props.unit} resourceType="mana" />
       </div>
     )
   }
