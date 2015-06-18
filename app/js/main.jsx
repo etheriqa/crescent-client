@@ -2,7 +2,7 @@ import Dispatcher from './dispatcher'
 import {LogList} from './components/log.jsx'
 import {LogStore} from './stores/log'
 
-const ws = new WebSocket(`ws://localhost:25200/?name=etheriqa${(new Date()).getMilliseconds()}`)
+const ws = new WebSocket(`${window.SERVER_URL}/?name=etheriqa${(new Date()).getMilliseconds()}`)
 const action = new Dispatcher
 const logStore = new LogStore(action)
 
