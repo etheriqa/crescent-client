@@ -1,5 +1,5 @@
 import Dispatcher from './dispatcher'
-import {LogList} from './components/log.jsx'
+import LogList from './components/log_list.jsx'
 import {LogStore} from './stores/log'
 
 const ws = new WebSocket(`${window.SERVER_URL}/?name=etheriqa${(new Date()).getMilliseconds()}`)
