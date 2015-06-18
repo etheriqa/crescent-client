@@ -40,6 +40,15 @@ ws.onerror = function(e) {
   console.log(e)
 }
 
+window.profile = function(userName) {
+  ws.send(JSON.stringify({
+    Type: 'Profile',
+    Data: {
+      UserName: userName
+    }
+  }))
+}
+
 window.chat = function(message) {
   ws.send(JSON.stringify({
     Type: 'Chat',

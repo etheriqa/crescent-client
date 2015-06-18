@@ -38,7 +38,7 @@ export class LogStore extends Dispatcher {
     this.dispatch('change')
   }
   onChat(payload) {
-    this.logs_.push(new ChatLog(this.id_++, payload.ClientName, payload.Message))
+    this.logs_.push(new ChatLog(this.id_++, payload.UserName, payload.Message))
     this.dispatch('change')
   }
 }
