@@ -1,10 +1,13 @@
 import Dispatcher from './dispatcher'
 import LogList from './components/log_list.jsx'
+import UnitGroup from './components/unit_group.jsx'
 import {LogStore} from './stores/log'
+import UnitGroupStore from './stores/unit_group'
 
-const ws = new WebSocket(`${window.SERVER_URL}/?name=etheriqa${(new Date()).getMilliseconds()}`)
 const action = new Dispatcher
 const logStore = new LogStore(action)
+const unitGroupStore = new UnitGroupStore(action, 1)
+const ws = new WebSocket(`${window.SERVER_URL}/?name=etheriqa${(new Date()).getMilliseconds()}`)
 
 ws.onopen = function(e) {
   console.log(e)
@@ -18,6 +21,16 @@ ws.onmessage = function(e) {
       break
     case 'Chat':
       action.dispatch('chat', frame.Data)
+      break
+    case 'UnitJoin':
+      action.dispatch('unitJoin', frame.Data)
+      break
+    case 'UnitLeave':
+      action.dispatch('unitLeave', frame.Data)
+      break
+    case 'UnitResource':
+      action.dispatch('unitResource', frame.Data)
+      break
   }
 }
 ws.onclose = function(e) {
@@ -79,6 +92,9 @@ window.interrupt = function() {
 }
 
 React.render(
-  <LogList store={logStore} />,
+  <div>
+    <UnitGroup store={unitGroupStore} />
+    <LogList store={logStore} />
+  </div>,
   document.getElementById('crescent')
 )
