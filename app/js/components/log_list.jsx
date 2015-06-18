@@ -2,21 +2,21 @@ import Log from './log.jsx'
 
 export default class LogList extends React.Component {
   componentWillMount() {
-    const id = this.props.store.register('change', this.onchange.bind(this))
+    const id = this.props.log.register('change', this.onchange.bind(this))
     this.setState({
       id: id,
-      logs: this.props.store.logs()
+      logs: this.props.log.logs()
     })
   }
   componentWillUnmount() {
-    this.props.store.unregister('change', this.state.id)
+    this.props.log.unregister('change', this.state.id)
   }
   componentDidUpdate() {
     const node = React.findDOMNode(this)
     node.scrollTop = node.scrollHeight
   }
   onchange() {
-    this.setState({logs: this.props.store.logs()})
+    this.setState({logs: this.props.log.logs()})
   }
   render() {
     return (

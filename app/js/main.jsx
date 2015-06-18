@@ -103,9 +103,9 @@ window.interrupt = function() {
 
 React.render(
   <div>
-    <UnitGroup store={playerUnitGroupStore} />
-    <UnitGroup store={aiUnitGroupStore} />
-    <LogList store={logStore} />
+    <UnitGroup unitGroup={playerUnitGroupStore} />
+    <UnitGroup unitGroup={aiUnitGroupStore} />
+    <LogList log={logStore} />
   </div>,
   document.getElementById('crescent')
 )

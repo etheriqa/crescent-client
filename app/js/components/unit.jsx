@@ -1,16 +1,16 @@
 export default class Unit extends React.Component {
   componentWillMount() {
-    const id = this.props.store.register('change', this.onchange.bind(this))
+    const id = this.props.unit.register('change', this.onchange.bind(this))
     this.setState({
       id: id,
-      unit: this.props.store
+      unit: this.props.unit
     })
   }
   componentWillUnmount() {
-    this.props.store.unregister('change', this.state.id)
+    this.props.unit.unregister('change', this.state.id)
   }
   onchange() {
-    this.setState({unit: this.props.store})
+    this.setState({unit: this.props.unit})
   }
   render() {
     const unit = this.state.unit
