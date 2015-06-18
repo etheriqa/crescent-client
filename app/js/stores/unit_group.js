@@ -1,6 +1,9 @@
 import Dispatcher from '../dispatcher'
 import UnitStore from './unit'
 
+export const UNIT_GROUP_PLAYER = 1
+export const UNIT_GROUP_AI     = 2
+
 export default class UnitGroupStore extends Dispatcher {
   constructor(action, unitGroup) {
     super()

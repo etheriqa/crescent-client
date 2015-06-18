@@ -2,11 +2,12 @@ import Dispatcher from './dispatcher'
 import LogList from './components/log_list.jsx'
 import UnitGroup from './components/unit_group.jsx'
 import {LogStore} from './stores/log'
-import UnitGroupStore from './stores/unit_group'
+import UnitGroupStore, {UNIT_GROUP_PLAYER, UNIT_GROUP_AI} from './stores/unit_group'
 
 const action = new Dispatcher
 const logStore = new LogStore(action)
-const unitGroupStore = new UnitGroupStore(action, 1)
+const playerUnitGroupStore = new UnitGroupStore(action, UNIT_GROUP_PLAYER)
+const aiUnitGroupStore = new UnitGroupStore(action, UNIT_GROUP_AI)
 const ws = new WebSocket(`${window.SERVER_URL}/?name=etheriqa${(new Date()).getMilliseconds()}`)
 
 ws.onopen = function(e) {
@@ -102,7 +103,8 @@ window.interrupt = function() {
 
 React.render(
   <div>
-    <UnitGroup store={unitGroupStore} />
+    <UnitGroup store={playerUnitGroupStore} />
+    <UnitGroup store={aiUnitGroupStore} />
     <LogList store={logStore} />
   </div>,
   document.getElementById('crescent')

@@ -11,12 +11,16 @@ export default class LogList extends React.Component {
   componentWillUnmount() {
     this.props.store.unregister('change', this.state.id)
   }
+  componentDidUpdate() {
+    const node = React.findDOMNode(this)
+    node.scrollTop = node.scrollHeight
+  }
   onchange() {
     this.setState({logs: this.props.store.logs()})
   }
   render() {
     return (
-      <div className="logList">
+      <div className="log-list">
         {this.state.logs.map(log => <Log key={log.id()} log={log} />)}
       </div>
     )
