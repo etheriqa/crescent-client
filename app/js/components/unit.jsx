@@ -1,4 +1,4 @@
-import Resource from './resource.jsx'
+import UnitResource from './unit_resource.jsx'
 
 export default class Unit extends React.Component {
   componentWillMount() {
@@ -15,8 +15,8 @@ export default class Unit extends React.Component {
     return (
       <div className="unit">
         [{this.props.unit.className()}] {this.props.unit.unitName()}
-        <Resource unit={this.props.unit} resourceType="health" />
-        <Resource unit={this.props.unit} resourceType="mana" />
+        <UnitResource unit={this.props.unit} resourceType="health" />
+        <UnitResource unit={this.props.unit} resourceType="mana" />
       </div>
     )
   }

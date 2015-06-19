@@ -1,4 +1,4 @@
-export default class Resource extends React.Component {
+export default class UnitResource extends React.Component {
   render() {
     let className = "resource"
     let amount = 0
