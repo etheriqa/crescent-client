@@ -31,14 +31,29 @@ export default class Action extends Dispatcher {
       case 'UnitLeave':
         this.dispatch('unitLeave', frame.Data)
         break
-      case 'UnitResource':
-        this.dispatch('unitResource', frame.Data)
+      case 'UnitAttach':
+        this.dispatch('unitAttach', frame.Data)
+        break
+      case 'UnitDetach':
+        this.dispatch('unitDetach', frame.Data)
         break
       case 'UnitActivating':
         this.dispatch('unitActivating', frame.Data)
         break
       case 'UnitActivated':
         this.dispatch('unitActivated', frame.Data)
+        break
+      case 'UnitCooldown':
+        this.dispatch('unitCooldown', frame.Data)
+        break
+      case 'UnitResource':
+        this.dispatch('unitResource', frame.Data)
+        break
+      case 'Damage':
+        this.dispatch('damage', frame.Data)
+        break
+      case 'Healing':
+        this.dispatch('healing', frame.Data)
         break
     }
   }
