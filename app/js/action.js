@@ -101,7 +101,7 @@ export default class Action extends Dispatcher {
       Data: {}
     }))
   }
-  ability() {
+  ability(abilityName, objectUnitID) {
     this.ws_.send(JSON.stringify({
       Type: 'Ability',
       Data: {
