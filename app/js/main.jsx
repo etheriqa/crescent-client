@@ -11,6 +11,8 @@ const logStore = new LogStore(action)
 const playerUnitGroupStore = new UnitGroupStore(action, UNIT_GROUP_PLAYER)
 const aiUnitGroupStore = new UnitGroupStore(action, UNIT_GROUP_AI)
 
+global.action = action
+
 React.render(
   <div>
     <UnitGroup unitGroup={playerUnitGroupStore} clock={clock} />
