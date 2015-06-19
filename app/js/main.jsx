@@ -32,6 +32,12 @@ ws.onmessage = function(e) {
     case 'UnitResource':
       action.dispatch('unitResource', frame.Data)
       break
+    case 'UnitActivating':
+      action.dispatch('unitActivating', frame.Data)
+      break
+    case 'UnitActivated':
+      action.dispatch('unitActivated', frame.Data)
+      break
   }
 }
 ws.onclose = function(e) {

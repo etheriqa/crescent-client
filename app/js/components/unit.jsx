@@ -1,3 +1,4 @@
+import UnitActivation from './unit_activation.jsx'
 import UnitResource from './unit_resource.jsx'
 
 export default class Unit extends React.Component {
@@ -14,7 +15,7 @@ export default class Unit extends React.Component {
   render() {
     return (
       <div className="unit">
-        [{this.props.unit.className()}] {this.props.unit.unitName()}
+        <UnitActivation unit={this.props.unit} />
         <UnitResource unit={this.props.unit} resourceType="health" />
         <UnitResource unit={this.props.unit} resourceType="mana" />
       </div>
