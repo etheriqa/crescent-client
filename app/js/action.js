@@ -25,6 +25,9 @@ export default class Action extends Dispatcher {
       case 'Chat':
         this.dispatch('chat', frame.Data)
         break
+      case 'Stage':
+        this.dispatch('stage', frame.Data)
+        break
       case 'UnitJoin':
         this.dispatch('unitJoin', frame.Data)
         break

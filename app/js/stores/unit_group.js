@@ -11,11 +11,16 @@ export default class UnitGroupStore extends Dispatcher {
     this.unitGroup_ = unitGroup
     this.units_ = []
 
+    this.action_.register('stage', this.onStage.bind(this))
     this.action_.register('unitJoin', this.onJoin.bind(this))
     this.action_.register('unitLeave', this.onLeave.bind(this))
   }
   unitGroup() { return this.unitGroup_ }
   units()     { return this.units_ }
+  onStage(payload) {
+    this.units_ = []
+    this.dispatch('change')
+  }
   onJoin(payload) {
     if (payload.UnitGroup !== this.unitGroup_) {
       return
