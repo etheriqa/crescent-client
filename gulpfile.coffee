@@ -2,11 +2,11 @@ gulp       = require 'gulp'
 concat     = require 'gulp-concat'
 less       = require 'gulp-less'
 plumber    = require 'gulp-plumber'
+webserver  = require 'gulp-webserver'
 browserify = require 'browserify'
 babelify   = require 'babelify'
 source     = require 'vinyl-source-stream'
 bower      = require 'main-bower-files'
-sync       = require 'browser-sync'
 
 gulp.task 'default', ['build']
 
@@ -39,16 +39,12 @@ gulp.task 'vendor', ->
     .pipe gulp.dest('public')
 
 gulp.task 'watch', ['build'], ->
-  gulp.watch 'app/index.html', ['html', 'reload']
-  gulp.watch 'app/js/**/*.js', ['js', 'reload']
-  gulp.watch 'app/js/**/*.jsx', ['js', 'reload']
-  gulp.watch 'app/css/**/*.less', ['css', 'reload']
-  gulp.watch 'bower_components/**/*.js', ['vendor', 'reload']
+  gulp.watch 'app/index.html', ['html']
+  gulp.watch 'app/js/**/*.js', ['js']
+  gulp.watch 'app/js/**/*.jsx', ['js']
+  gulp.watch 'app/css/**/*.less', ['css']
+  gulp.watch 'bower_components/**/*.js', ['vendor']
 
 gulp.task 'serve', ['watch'], ->
-  sync
-    server:
-      baseDir: 'public'
-
-gulp.task 'reload', ->
-  sync.reload
+  gulp.src('public')
+    .pipe webserver()

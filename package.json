@@ -21,13 +21,13 @@
   "devDependencies": {
     "babelify": "^6.1.2",
     "bower": "^1.4.1",
-    "browser-sync": "^2.7.11",
     "browserify": "^10.2.4",
     "coffee-script": "^1.9.3",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.5.2",
     "gulp-less": "^3.0.3",
     "gulp-plumber": "^1.0.1",
+    "gulp-webserver": "^0.9.1",
     "main-bower-files": "^2.8.0",
     "vinyl-source-stream": "^1.1.0"
   }
