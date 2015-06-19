@@ -1,9 +1,10 @@
 export default class UnitActivation extends React.Component {
   componentDidMount() {
     const id = this.props.clock.register('change', this.onchange.bind(this))
+    this.setState({id: id})
   }
   componentWillUnmount() {
-    this.props.unit.unregister('change', this.state.id)
+    this.props.clock.unregister('change', this.state.id)
   }
   onchange() {
     this.setState({})
