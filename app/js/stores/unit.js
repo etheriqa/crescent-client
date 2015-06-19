@@ -30,6 +30,7 @@ export default class UnitStore extends Dispatcher {
   activatingAbilityName() { return this.activatingAbilityName_ }
   activatingStartTime()   { return this.activatingStartTime_ }
   activatingEndTime()     { return this.activatingEndTime_ }
+  activatingDuration()    { return this.activatingEndTime_ - this.activatingStartTime_ }
   onResource(payload) {
     if (payload.UnitID !== this.unitID_) {
       return

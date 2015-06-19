@@ -1,7 +1,7 @@
 import Log from './log.jsx'
 
 export default class LogList extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     const id = this.props.log.register('change', this.onchange.bind(this))
     this.setState({id: id})
   }

@@ -1,10 +1,12 @@
 import Dispatcher from './dispatcher'
 import LogList from './components/log_list.jsx'
 import UnitGroup from './components/unit_group.jsx'
+import Clock from './stores/clock'
 import {LogStore} from './stores/log'
 import UnitGroupStore, {UNIT_GROUP_PLAYER, UNIT_GROUP_AI} from './stores/unit_group'
 
 const action = new Dispatcher
+const clock = new Clock(action)
 const logStore = new LogStore(action)
 const playerUnitGroupStore = new UnitGroupStore(action, UNIT_GROUP_PLAYER)
 const aiUnitGroupStore = new UnitGroupStore(action, UNIT_GROUP_AI)
@@ -17,6 +19,9 @@ ws.onmessage = function(e) {
   console.log(e)
   const frame = JSON.parse(e.data)
   switch (frame.Type) {
+    case 'Sync':
+      action.dispatch('sync', frame.Data)
+      break
     case 'Message':
       action.dispatch('message', frame.Data)
       break
@@ -109,8 +114,8 @@ window.interrupt = function() {
 
 React.render(
   <div>
-    <UnitGroup unitGroup={playerUnitGroupStore} />
-    <UnitGroup unitGroup={aiUnitGroupStore} />
+    <UnitGroup unitGroup={playerUnitGroupStore} clock={clock} />
+    <UnitGroup unitGroup={aiUnitGroupStore} clock={clock} />
     <LogList log={logStore} />
   </div>,
   document.getElementById('crescent')

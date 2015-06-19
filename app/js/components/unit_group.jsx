@@ -2,7 +2,7 @@ import Unit from './unit.jsx'
 import {UNIT_GROUP_PLAYER, UNIT_GROUP_AI} from '../stores/unit_group'
 
 export default class UnitGroup extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     const id = this.props.unitGroup.register('change', this.onchange.bind(this))
     this.setState({id: id})
   }
@@ -24,7 +24,9 @@ export default class UnitGroup extends React.Component {
     }
     return (
       <div className={className}>
-        {this.props.unitGroup.units().map(unit => <Unit key={unit.unitID()} unit={unit} />)}
+        {this.props.unitGroup.units().map(unit => (
+          <Unit key={unit.unitID()} unit={unit} clock={this.props.clock} />
+        ))}
       </div>
     )
   }
