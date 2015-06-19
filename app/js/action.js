@@ -64,7 +64,7 @@ export default class Action extends Dispatcher {
     console.log('error', e)
   }
   profile(userName) {
-    ws.send(JSON.stringify({
+    this.ws_.send(JSON.stringify({
       Type: 'Profile',
       Data: {
         UserName: userName
@@ -72,7 +72,7 @@ export default class Action extends Dispatcher {
     }))
   }
   chat(message) {
-    ws.send(JSON.stringify({
+    this.ws_.send(JSON.stringify({
       Type: 'Chat',
       Data: {
         Message: message
@@ -80,7 +80,7 @@ export default class Action extends Dispatcher {
     }))
   }
   stage(stageID) {
-    ws.send(JSON.stringify({
+    this.ws_.send(JSON.stringify({
       Type: 'Stage',
       Data: {
         StageID: stageID
@@ -88,7 +88,7 @@ export default class Action extends Dispatcher {
     }))
   }
   join(className) {
-    ws.send(JSON.stringify({
+    this.ws_.send(JSON.stringify({
       Type: 'Join',
       Data: {
         ClassName: className
@@ -96,13 +96,13 @@ export default class Action extends Dispatcher {
     }))
   }
   leave() {
-    ws.send(JSON.stringify({
+    this.ws_.send(JSON.stringify({
       Type: 'Leave',
       Data: {}
     }))
   }
   ability() {
-    ws.send(JSON.stringify({
+    this.ws_.send(JSON.stringify({
       Type: 'Ability',
       Data: {
         AbilityName: abilityName,
@@ -111,7 +111,7 @@ export default class Action extends Dispatcher {
     }))
   }
   interrupt() {
-    ws.send(JSON.stringify({
+    this.ws_.send(JSON.stringify({
       Type: 'Interrupt',
       Data: {}
     }))
