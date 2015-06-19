@@ -1,4 +1,5 @@
 import Action from './action'
+import Chat from './components/chat.jsx'
 import LogList from './components/log_list.jsx'
 import UnitGroup from './components/unit_group.jsx'
 import Clock from './stores/clock'
@@ -18,6 +19,7 @@ React.render(
     <UnitGroup unitGroup={playerUnitGroupStore} clock={clock} />
     <UnitGroup unitGroup={aiUnitGroupStore} clock={clock} />
     <LogList log={logStore} />
+    <Chat action={action} />
   </div>,
   document.getElementById('crescent')
 )
