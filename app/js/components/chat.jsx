@@ -42,6 +42,9 @@ export default class Chat extends React.Component {
     case input[0] === '/':
       break
     default:
+      if (input === '') {
+        return
+      }
       this.props.action.chat(input)
     }
   }
