@@ -1,16 +1,16 @@
 export default class UnitResource extends React.Component {
   render() {
-    let className = "resource"
+    let className = "unit-resource"
     let amount = 0
     let max = 1
     switch (this.props.resourceType) {
     case "health":
-      className += " resource-health"
+      className += " unit-resource-health"
       amount = this.props.unit.health()
       max = this.props.unit.healthMax()
       break
     case "mana":
-      className += " resource-mana"
+      className += " unit-resource-mana"
       amount = this.props.unit.mana()
       max = this.props.unit.manaMax()
       break

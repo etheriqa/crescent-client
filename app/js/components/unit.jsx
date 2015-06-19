@@ -2,6 +2,9 @@ import UnitActivation from './unit_activation.jsx'
 import UnitResource from './unit_resource.jsx'
 
 export default class Unit extends React.Component {
+  componentWillMount() {
+    this.setState({active: false})
+  }
   componentDidMount() {
     const id = this.props.unit.register('change', this.onchange.bind(this))
     this.setState({id: id})
@@ -13,12 +16,22 @@ export default class Unit extends React.Component {
     this.setState({})
   }
   render() {
+    let className = "unit"
+    if (this.state.active) {
+      className += " unit-active"
+    }
     return (
-      <div className="unit">
+      <div className={className} onMouseEnter={this.handleMouseEnter.bind(this)} onMouseLeave={this.handleMouseLeave.bind(this)}>
         <UnitActivation unit={this.props.unit} clock={this.props.clock} />
         <UnitResource unit={this.props.unit} resourceType="health" />
         <UnitResource unit={this.props.unit} resourceType="mana" />
       </div>
     )
+  }
+  handleMouseEnter(e) {
+    this.setState({active: true})
+  }
+  handleMouseLeave(e) {
+    this.setState({active: false})
   }
 }
