@@ -24,7 +24,7 @@ export class SystemLog extends Log {
 
 export class ChatLog extends Log {}
 
-export class LogStore extends Dispatcher {
+export default class LogStore extends Dispatcher {
   constructor(action) {
     super()
     this.id_ = 0

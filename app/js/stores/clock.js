@@ -1,6 +1,6 @@
 import Dispatcher from '../dispatcher'
 
-const GAME_TICK = 50
+export const GAME_TICK = 50
 
 export default class Clock extends Dispatcher {
   constructor(action) {
