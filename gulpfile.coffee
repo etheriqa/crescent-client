@@ -33,7 +33,10 @@ gulp.task 'css', ->
 
 gulp.task 'vendor', ->
   gulp
-    .src bower()
+    .src bower
+      overrides:
+        react:
+          main: 'react-with-addons.js'
     .pipe plumber()
     .pipe concat('vendor.js')
     .pipe gulp.dest('public')
