@@ -85,6 +85,9 @@ export default class Action extends Dispatcher {
   }
   onclose(e) {
     console.log('close', e)
+    this.dispatch('message', {
+      Message: 'ERROR: Lost connection'
+    })
   }
   onerror(e) {
     console.log('error', e)
