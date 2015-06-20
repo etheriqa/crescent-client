@@ -10,6 +10,7 @@ export default class Action extends Dispatcher {
     this.ws_.onclose   = this.onclose.bind(this)
     this.activeUnitID_ = null
     document.addEventListener('keypress', e => {
+      console.log(e.keyCode)
       switch (e.keyCode) {
       case 113: // Q
         this.ability('Q', this.activeUnitID_)
@@ -23,7 +24,7 @@ export default class Action extends Dispatcher {
       case 114: // R
         this.ability('R', this.activeUnitID_)
         break
-      case 27: // Esc
+      case 32: // Space
         this.interrupt()
         break
       }
