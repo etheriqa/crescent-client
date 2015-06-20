@@ -10,7 +10,6 @@ export default class Action extends Dispatcher {
     this.ws_.onclose   = this.onclose.bind(this)
     this.activeUnitID_ = null
     document.addEventListener('keypress', e => {
-      console.log(e.keyCode)
       switch (e.keyCode) {
       case 113: // Q
         this.ability('Q', this.activeUnitID_)
@@ -90,6 +89,14 @@ export default class Action extends Dispatcher {
   onerror(e) {
     console.log('error', e)
   }
+  write(type, data) {
+    const json = JSON.stringify({
+      Type: type,
+      Data: data
+    })
+    console.log(json)
+    this.ws_.send(json)
+  }
   activateUnit(id) {
     this.activeUnitID_ = id
   }
@@ -97,56 +104,27 @@ export default class Action extends Dispatcher {
     this.activeUnitID_ = null
   }
   profile(userName) {
-    this.ws_.send(JSON.stringify({
-      Type: 'Profile',
-      Data: {
-        UserName: userName
-      }
-    }))
+    this.write('Profile', {UserName: userName})
   }
   chat(message) {
-    this.ws_.send(JSON.stringify({
-      Type: 'Chat',
-      Data: {
-        Message: message
-      }
-    }))
+    this.write('Chat', {Message: message})
   }
   stage(stageID) {
-    this.ws_.send(JSON.stringify({
-      Type: 'Stage',
-      Data: {
-        StageID: stageID
-      }
-    }))
+    this.write('Stage', {StageID: stageID})
   }
   join(className) {
-    this.ws_.send(JSON.stringify({
-      Type: 'Join',
-      Data: {
-        ClassName: className
-      }
-    }))
+    this.write('Join', {ClassName: className})
   }
   leave() {
-    this.ws_.send(JSON.stringify({
-      Type: 'Leave',
-      Data: {}
-    }))
+    this.write('Leave', {})
   }
   ability(abilityName, objectUnitID) {
-    this.ws_.send(JSON.stringify({
-      Type: 'Ability',
-      Data: {
-        AbilityName: abilityName,
-        ObjectUnitID: objectUnitID
-      }
-    }))
+    this.write('Ability', {
+      AbilityName: abilityName,
+      ObjectUnitID: objectUnitID
+    })
   }
   interrupt() {
-    this.ws_.send(JSON.stringify({
-      Type: 'Interrupt',
-      Data: {}
-    }))
+    this.write('Interrupt', {})
   }
 }
