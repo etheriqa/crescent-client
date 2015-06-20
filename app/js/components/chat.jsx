@@ -2,7 +2,7 @@ export default class Chat extends React.Component {
   render() {
     return (
       <form className="chat" onSubmit={this.handleSubmit.bind(this)}>
-        <input type="text" placeholder=">>>" onSubmit={e=>console.log(e)} />
+        <input type="text" placeholder=">>>" />
       </form>
     )
   }
