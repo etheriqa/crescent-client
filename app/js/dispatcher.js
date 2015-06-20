@@ -1,13 +1,13 @@
 export default class Dispatcher {
   constructor() {
-    this.id_ = 0
+    this.handler_id_ = 0
     this.handlers_ = new Map
   }
   register(type, handler) {
     if (!this.handlers_.has(type)) {
       this.handlers_.set(type, new Map)
     }
-    const id = this.id_++
+    const id = this.handler_id_++
     this.handlers_.get(type).set(id, handler)
     return id
   }

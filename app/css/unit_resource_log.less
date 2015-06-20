@@ -1,0 +1,31 @@
+.unit-resource-log {
+  position: absolute;
+  left: 240px;
+  width: 60px;
+  height: 72px;
+
+  .damage {
+    color: crimson;
+  }
+
+  .healing {
+    color: springgreen;
+  }
+
+  .critical {
+    font-size: 120%;
+  }
+}
+
+.unit-resource-log-enter {
+  position: absolute;
+  bottom: 0px;
+  opacity: 1;
+  transition: all 3s ease-out;
+}
+
+.unit-resource-log-enter.unit-resource-log-enter-active {
+  position: absolute;
+  bottom: 72px;
+  opacity: 0;
+}

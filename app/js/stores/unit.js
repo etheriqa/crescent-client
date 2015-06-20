@@ -1,9 +1,11 @@
 import Dispatcher from '../dispatcher'
+import UnitResourceLogStore from './unit_resource_log'
 
 export default class UnitStore extends Dispatcher {
   constructor(action, payload) {
     super()
     this.action_       = action
+    this.resourceLog_  = new UnitResourceLogStore(action, payload.UnitID)
     this.unitID_       = payload.UnitID
     this.unitGroup_    = payload.UnitGroup
     this.unitName_     = payload.UnitName
@@ -18,6 +20,7 @@ export default class UnitStore extends Dispatcher {
     this.action_.register('unitActivating', this.onActivating.bind(this))
     this.action_.register('unitActivated', this.onActivated.bind(this))
   }
+  resourceLog()           { return this.resourceLog_ }
   unitID()                { return this.unitID_ }
   unitGroup()             { return this.unitGroup_ }
   unitName()              { return this.unitName_ }

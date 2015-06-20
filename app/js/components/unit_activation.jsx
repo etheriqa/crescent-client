@@ -14,11 +14,11 @@ export default class UnitActivation extends React.Component {
       const elapsed = this.props.clock.now() - this.props.unit.activatingStartTime()
       const progress = elapsed / this.props.unit.activatingDuration()
       return (
-        <div className="unit-activating">
-          <svg width="200" height="20">
-            <rect rx="3" ry="3" width="200" height="6" stroke="white" strokeWidth="1" fill="none" />
-            <rect rx="3" ry="3" width={Math.max(0, Math.min(1, progress))*200} height="6" stroke="white" strokeWidth="1" fill="white" />
-            <text x="200" y="20" textAnchor="end" fill="white">
+        <div className="unit-activation">
+          <svg width="210" height="24">
+            <rect rx="3" ry="3" width="210" height="6" stroke="white" strokeWidth="1" fill="none" />
+            <rect rx="3" ry="3" width={Math.max(0, Math.min(1, progress))*210} height="6" stroke="white" strokeWidth="1" fill="white" />
+            <text x="210" y="20" textAnchor="end" fill="white">
               {this.props.unit.activatingAbilityName()}
             </text>
           </svg>
@@ -26,7 +26,7 @@ export default class UnitActivation extends React.Component {
       )
     } else {
       return (
-        <div className="unit-name">
+        <div className="unit-activation">
           [{this.props.unit.className()}] {this.props.unit.unitName()}
         </div>
       )
