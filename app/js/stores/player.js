@@ -11,6 +11,7 @@ export default class PlayerStore extends Dispatcher {
     this.abilityE_ = null
     this.abilityR_ = null
 
+    this.action_.register('stage', this.onStage.bind(this))
     this.action_.register('player', this.onPlayer.bind(this))
     this.action_.register('unitLeave', this.onUnitLeave.bind(this))
   }
@@ -19,6 +20,14 @@ export default class PlayerStore extends Dispatcher {
   abilityW() { return this.abilityW_ }
   abilityE() { return this.abilityE_ }
   abilityR() { return this.abilityR_ }
+  onStage(payload) {
+    this.unitID_   = null
+    this.abilityQ_ = null
+    this.abilityW_ = null
+    this.abilityE_ = null
+    this.abilityR_ = null
+    this.dispatch('change')
+  }
   onPlayer(payload) {
     this.unitID_   = payload.UnitID
     this.abilityQ_ = new PlayerAbilityStore(this.action_, "Q", payload.Q)
