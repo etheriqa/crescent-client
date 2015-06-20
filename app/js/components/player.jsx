@@ -26,10 +26,10 @@ export default class Player extends React.Component {
     } else {
       return (
         <div className="player">
-          <PlayerAbility ability={this.props.player.abilityQ()} />
-          <PlayerAbility ability={this.props.player.abilityW()} />
-          <PlayerAbility ability={this.props.player.abilityE()} />
-          <PlayerAbility ability={this.props.player.abilityR()} />
+          <PlayerAbility ability={this.props.player.abilityQ()} clock={this.props.clock} />
+          <PlayerAbility ability={this.props.player.abilityW()} clock={this.props.clock} />
+          <PlayerAbility ability={this.props.player.abilityE()} clock={this.props.clock} />
+          <PlayerAbility ability={this.props.player.abilityR()} clock={this.props.clock} />
         </div>
       )
     }
