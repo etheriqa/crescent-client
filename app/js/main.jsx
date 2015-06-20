@@ -17,8 +17,8 @@ const playerStore = new PlayerStore(action, playerUnitGroupStore)
 
 React.render(
   <div>
-    <UnitGroup unitGroup={playerUnitGroupStore} clock={clock} />
-    <UnitGroup unitGroup={aiUnitGroupStore} clock={clock} />
+    <UnitGroup action={action} unitGroup={playerUnitGroupStore} clock={clock} />
+    <UnitGroup action={action} unitGroup={aiUnitGroupStore} clock={clock} />
     <Player action={action} player={playerStore} clock={clock} />
     <LogList log={logStore} />
     <Chat action={action} />

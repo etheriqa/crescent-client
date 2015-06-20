@@ -8,6 +8,26 @@ export default class Action extends Dispatcher {
     this.ws_.onmessage = this.onmessage.bind(this)
     this.ws_.onerror   = this.onerror.bind(this)
     this.ws_.onclose   = this.onclose.bind(this)
+    this.activeUnitID_ = null
+    document.addEventListener('keypress', e => {
+      switch (e.keyCode) {
+      case 113: // Q
+        this.ability('Q', this.activeUnitID_)
+        break
+      case 119: // W
+        this.ability('W', this.activeUnitID_)
+        break
+      case 101: // E
+        this.ability('E', this.activeUnitID_)
+        break
+      case 114: // R
+        this.ability('R', this.activeUnitID_)
+        break
+      case 27: // Esc
+        this.interrupt()
+        break
+      }
+    })
   }
   onopen(e) {
     console.log('open', e)
@@ -68,6 +88,12 @@ export default class Action extends Dispatcher {
   }
   onerror(e) {
     console.log('error', e)
+  }
+  activateUnit(id) {
+    this.activeUnitID_ = id
+  }
+  deactivateUnit(id) {
+    this.activeUnitID_ = null
   }
   profile(userName) {
     this.ws_.send(JSON.stringify({

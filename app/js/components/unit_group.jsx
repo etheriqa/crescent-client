@@ -25,7 +25,7 @@ export default class UnitGroup extends React.Component {
     return (
       <div className={className}>
         {this.props.unitGroup.units().map(unit => (
-          <Unit key={unit.unitID()} unit={unit} clock={this.props.clock} />
+          <Unit key={unit.unitID()} action={this.props.action} unit={unit} clock={this.props.clock} />
         ))}
       </div>
     )

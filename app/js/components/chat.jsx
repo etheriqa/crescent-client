@@ -1,4 +1,9 @@
 export default class Chat extends React.Component {
+  componentDidMount() {
+    React.findDOMNode(this).addEventListener('keypress', e => {
+      e.stopPropagation()
+    })
+  }
   render() {
     return (
       <form className="chat" onSubmit={this.handleSubmit.bind(this)}>

@@ -30,8 +30,10 @@ export default class Unit extends React.Component {
   }
   handleMouseEnter(e) {
     this.setState({active: true})
+    this.props.action.activateUnit(this.props.unit.unitID())
   }
   handleMouseLeave(e) {
     this.setState({active: false})
+    this.props.action.deactivateUnit(this.props.unit.unitID())
   }
 }
