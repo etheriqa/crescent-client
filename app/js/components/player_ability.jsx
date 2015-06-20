@@ -15,7 +15,7 @@ export default class PlayerAbility extends React.Component {
     if (this.props.ability.isCooldown()) {
       return (
         <div className="player-ability player-ability-cooldown">
-          {Math.ceil((this.props.ability.cooldownEndTime() - this.props.clock.now()) * GAME_TICK / 1000)}
+          {Math.max(0, Math.ceil((this.props.ability.cooldownEndTime() - this.props.clock.now()) * GAME_TICK / 1000))}
         </div>
       )
     } else {
