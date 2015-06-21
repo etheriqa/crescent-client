@@ -14,6 +14,7 @@ export default class PlayerAbilityStore extends Dispatcher {
     this.cooldownDuration_   = payload.CooldownDuration
     this.disableTypes_       = payload.DisableTypes
     this.cooldownEndTime_    = null
+    this.disables_           = []
 
     this.action_.register('unitCooldown', this.onCooldown.bind(this))
   }
@@ -29,6 +30,21 @@ export default class PlayerAbilityStore extends Dispatcher {
   cooldownEndTime()    { return this.cooldownEndTime_ }
   isCooldown() {
     return this.cooldownEndTime_ !== null
+  }
+  isDisabled() {
+    for (const d1 of this.disables_) {
+      for (const d2 of this.disableTypes_) {
+        if (d1 === d2) {
+          return true
+        }
+      }
+    }
+    return false
+  }
+  setDisables(disables) {
+    console.log('setDisables', disables)
+    this.disables_ = disables
+    this.dispatch('change')
   }
   onCooldown(payload) {
     if (payload.AbilityName !== this.name_) {

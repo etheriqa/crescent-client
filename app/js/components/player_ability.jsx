@@ -12,7 +12,13 @@ export default class PlayerAbility extends React.Component {
     this.setState({})
   }
   render() {
-    if (this.props.ability.isCooldown()) {
+    if (this.props.ability.isDisabled()) {
+      return (
+        <div className="player-ability player-ability-disabled">
+          Disabled
+        </div>
+      )
+    } else if (this.props.ability.isCooldown()) {
       return (
         <div className="player-ability player-ability-cooldown">
           {Math.max(0, Math.ceil((this.props.ability.cooldownEndTime() - this.props.clock.now()) * GAME_TICK / 1000))}
