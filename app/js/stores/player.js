@@ -18,11 +18,12 @@ export default class PlayerStore extends Dispatcher {
     this.action_.register('unitAttach', this.onUnitAttach.bind(this))
     this.action_.register('unitDetach', this.onUnitDetach.bind(this))
   }
-  unitID()   { return this.unitID_ }
-  abilityQ() { return this.abilityQ_ }
-  abilityW() { return this.abilityW_ }
-  abilityE() { return this.abilityE_ }
-  abilityR() { return this.abilityR_ }
+  unitID()      { return this.unitID_ }
+  abilityQ()    { return this.abilityQ_ }
+  abilityW()    { return this.abilityW_ }
+  abilityE()    { return this.abilityE_ }
+  abilityR()    { return this.abilityR_ }
+  attachments() { return this.attachments_.values() }
   onStage(payload) {
     this.unitID_   = null
     this.abilityQ_ = null
@@ -59,6 +60,7 @@ export default class PlayerStore extends Dispatcher {
     }
     this.attachments_.set(payload.AttachmentName, payload)
     this.updateAbilities()
+    this.dispatch('change')
   }
   onUnitDetach(payload) {
     if (this.unitID_ === null || payload.UnitID !== this.unitID_) {
@@ -66,6 +68,7 @@ export default class PlayerStore extends Dispatcher {
     }
     this.attachments_.delete(payload.AttachmentName)
     this.updateAbilities()
+    this.dispatch('change')
   }
   updateAbilities() {
     const disables = []

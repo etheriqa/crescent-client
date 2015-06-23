@@ -1,4 +1,5 @@
 import PlayerAbility from './player_ability.jsx'
+import PlayerAttachmentList from './player_attachment_list.jsx'
 import PlayerClass from './player_class.jsx'
 
 export default class Player extends React.Component {
@@ -26,6 +27,7 @@ export default class Player extends React.Component {
     } else {
       return (
         <div className="player">
+          <PlayerAttachmentList player={this.props.player} />
           <PlayerAbility ability={this.props.player.abilityQ()} clock={this.props.clock} />
           <PlayerAbility ability={this.props.player.abilityW()} clock={this.props.clock} />
           <PlayerAbility ability={this.props.player.abilityE()} clock={this.props.clock} />

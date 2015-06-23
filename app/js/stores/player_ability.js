@@ -42,7 +42,6 @@ export default class PlayerAbilityStore extends Dispatcher {
     return false
   }
   setDisables(disables) {
-    console.log('setDisables', disables)
     this.disables_ = disables
     this.dispatch('change')
   }
