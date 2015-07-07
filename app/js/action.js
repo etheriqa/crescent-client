@@ -45,8 +45,8 @@ export default class Action extends Dispatcher {
       case 'Chat':
         this.dispatch('chat', frame.Data)
         break
-      case 'Stage':
-        this.dispatch('stage', frame.Data)
+      case 'Level':
+        this.dispatch('level', frame.Data)
         break
       case 'Player':
         this.dispatch('player', frame.Data)
@@ -112,8 +112,8 @@ export default class Action extends Dispatcher {
   chat(message) {
     this.write('Chat', {Message: message})
   }
-  stage(stageID) {
-    this.write('Stage', {StageID: stageID})
+  level(levelID) {
+    this.write('Level', {LevelID: levelID})
   }
   join(className) {
     this.write('Join', {ClassName: className})

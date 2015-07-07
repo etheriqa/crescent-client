@@ -23,8 +23,8 @@ export default class Chat extends React.Component {
     case input.startsWith('/chat '):
       this.props.action.chat(input.slice(6).trim())
       break
-    case input.startsWith('/stage '):
-      this.props.action.stage(parseInt(input.slice(7).trim()))
+    case input.startsWith('/level '):
+      this.props.action.level(parseInt(input.slice(7).trim()))
       break
     case input.startsWith('/join '):
       this.props.action.join(input.slice(6).trim())

@@ -12,7 +12,7 @@ export default class PlayerStore extends Dispatcher {
     this.abilityR_    = null
     this.attachments_ = new Map
 
-    this.action_.register('stage', this.onStage.bind(this))
+    this.action_.register('level', this.onLevel.bind(this))
     this.action_.register('player', this.onPlayer.bind(this))
     this.action_.register('unitLeave', this.onUnitLeave.bind(this))
     this.action_.register('unitAttach', this.onUnitAttach.bind(this))
@@ -24,7 +24,7 @@ export default class PlayerStore extends Dispatcher {
   abilityE()    { return this.abilityE_ }
   abilityR()    { return this.abilityR_ }
   attachments() { return this.attachments_.values() }
-  onStage(payload) {
+  onLevel(payload) {
     this.unitID_   = null
     this.abilityQ_ = null
     this.abilityW_ = null
